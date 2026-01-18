@@ -1,3 +1,1 @@
-JL Anderson Design
-A UX design portfolio website
-Owned and maintained by JL Anderson
+JL Anderson Design: A UX design portfolio website owned and maintained by JL Anderson
