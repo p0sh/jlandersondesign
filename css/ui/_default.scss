@@ -1,0 +1,158 @@
+/*------------------------------------*\
+    $DEFAULT
+\*------------------------------------*/
+/** 
+ * Default styles
+ */
+ 
+ 
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+  
+/**
+ * type styles
+ */
+ 
+ //body copy type change for viewports
+
+ body {
+	@include media-query(mini-tablet) {
+		font-size: $base-font-size * 1.4;
+		line-height: $line-height-ratio;
+	}
+ }
+
+ 
+ //big text
+ .bigtext {
+	font-size: $big-size;
+	line-height: $line-height-ratio * .8;
+	 
+	 @include media-query(mini-tablet){
+		 font-size: $kilo-size;
+	 }
+ }
+ 
+ 
+ 
+ 
+  
+
+/**
+ * default page and section styles
+ */
+ 
+body {
+	background-color: $black;
+	color: $white;
+	
+	// fade in each subpage
+	$delay-page: .1s;
+	@include page-fade($delay: $delay-page);
+} 
+
+
+/* wrapper keeps widest bkpt at a readable measure */
+.wrapper {
+	margin: 0 auto;
+	max-width: $desk-start;
+	padding: $base-spacing-unit $base-spacing-unit $base-spacing-unit*3.5;
+}
+
+
+section {
+	position: relative;
+}
+
+
+.backtotop {
+	margin: $base-spacing-unit 0;
+	text-align: right; 	
+}
+
+footer {
+	background: $white;
+	color: $black;
+	padding: $base-spacing-unit;
+	
+	p {
+		padding-bottom: $half-spacing-unit;
+	}
+	
+	ul {
+		list-style: none;
+		margin: 0;
+	}
+	
+	li {
+		margin: $half-spacing-unit 0 $half-spacing-unit;
+	}
+	
+	a {
+		color: $black;
+	}
+	
+	//fixes some spacing
+	.name-copyright {
+		padding-bottom: 0;
+	}
+	
+	// start flex at breakpoint
+	@include media-query(mini-tablet) {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+
+
+ 
+
+/**
+ * default element styles
+ */
+ 
+a {
+	color: $cta-bg;
+	text-shadow: none;
+	
+	&:hover {
+		@include CTA-rollover($bg: $cta-bg, $text: $cta-text);
+	}
+ }
+ 
+p {
+	padding: 0 0 1rem;
+}
+
+h1, h2, h3 {
+	font-family: $second-font-family;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+
+
+.title {
+	a {
+		@extend .CTA;
+		font-family: $second-font-family;	
+		margin-bottom: 1.5rem;
+	 }
+}
+
+//border and default size for images within content blocks
+.content {
+	img {
+		background-color: #ccc;
+		border: 2px solid $grey;
+		width: 100%;
+		height: auto;
+	}
+}
+
+

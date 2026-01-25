@@ -1,0 +1,79 @@
+/*------------------------------------*\
+    $CTA CLASSES
+\*------------------------------------*/
+
+/* 
+	you can create button-like CTAs in a few ways:
+
+	1. include the CTA mixin (with arguments if you want)
+	
+		.coolbutton {
+			@include CTA
+		}
+			
+	2. use the .cta class
+	
+		<button class="cta">
+		
+	3. make a list of CTAs:
+	
+		<ul class="ctalist-horiz">
+			<li>
+			<li>
+				<a class="icon-thing"> 
+	
+*/
+
+
+
+
+.ctalist-horiz { // nice horizontal list of CTAs, default CTA style
+	margin: 0 0 1rem;
+	
+	li {
+		display: inline-block;
+		
+		a {
+			@include CTA;
+			margin-right: 1rem;
+		}
+	}
+}
+
+ .CTA {
+ 	@include CTA;
+ }
+
+
+
+[class^="icon-"], [class*=" icon-"]{ //put an icon on the left of the CTA
+	@include CTA-icon; // if the item has an "icon-" class, the icon styles are mixed in
+}
+
+// icons
+.icon-download {
+ 	background-image: url(../svg/download.svg);
+}
+.icon-info {
+ 	background-image: url(../svg/information.svg);
+}
+.icon-link {
+ 	background-image: url(../svg/link.svg);
+}
+.icon-linkedin {
+ 	background-image: url(../svg/linkedin.svg);
+}
+.icon-mail {
+ 	background-image: url(../svg/mail.svg);
+}
+.icon-medium {
+ 	background-image: url(../svg/medium.svg);
+}
+.icon-notebook {
+ 	background-image: url(../svg/notebook.svg);
+}
+.icon-resume {
+ 	background-image: url(../svg/resume.svg);
+}
+
+

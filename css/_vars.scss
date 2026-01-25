@@ -1,0 +1,115 @@
+/*------------------------------------*\
+    VARS.SCSS
+\*------------------------------------*/
+
+/**
+ * CONFIG variables, from BFoo
+ */
+$fontPath:              "./fonts/";
+// $imgPath:               "./img/";
+
+
+/*------------NOTE TO SELF------------*\
+	some of these vars might be helpful 
+	if you copy the code from how 
+	Inuit does type, mqs/breakpoints
+/*------------NOTE TO SELF------------*\
+
+
+/**
+ * TYPOGRAPHY
+ */
+
+/** Font-sizes (in pixels). */
+
+$base-font-size:    16px!default;
+$base-line-height:  24px!default;
+
+$giga-size:         72px;
+$mega-size:         60px;
+$kilo-size:         48px;
+$big-size:			36px;
+
+$h1-size:           24px; // .alpha
+$h2-size:           22px; // .beta
+$h3-size:           20px; // .gamma
+$h4-size:           18px; // .delta
+$h5-size:           16px; // .epsilon
+$h6-size:           14px; // .zeta
+
+$milli-size:        14px;
+$micro-size:        12px;
+
+
+/**
+ * Spacing vars, based on type cadence 
+ */
+$base-spacing-unit: $base-font-size!default;
+$half-spacing-unit: $base-font-size / 2!default;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+/**
+ * TYPEFACES
+ 
+ from Google: Oswald:400,600
+ */
+$base-font-family:  	"lmroman10", serif!default;
+$second-font-family:	"Oswald", sans-serif!default; 
+
+/**
+ * COLOR PALETTE
+ */
+
+// $color:					#BADASS;
+
+$black:					#252225;
+$white:					#f8f8f8;
+
+$grey:					lighten($black, 50%);
+$greyTouch:				lighten($black, 65%);
+$greyLight:				lighten($black, 78%);
+$greyLightest:			lighten($black, 82%);
+$greyDarker:			lighten($black, 30%);
+$greyDarkest:			lighten($black, 10%);
+
+
+
+$crimson:				#9c1818;
+
+$purple:				#5B006D;
+$purpleLight:			lighten($purple, 80%);
+$purpleDark:			darken($purple, 10%);
+
+$red:					#FF2B2B;
+
+$blue:					#5CD6FF;
+
+$yellow:				#F4E409;
+
+$green:					#00ffd4;
+
+
+/**
+ * BREAKPOINTS
+ */
+
+$mini-tablet-start:			600px;
+
+$tablet-start:				750px;
+
+$desk-start:				950px;
+
+
+
+/**
+ * MISC
+ */
+ 
+$timing: 			1s;
+$timing-hover:		.7s;
+
+$round:				2.5px;
+
+
+
+

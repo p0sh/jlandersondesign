@@ -1,0 +1,70 @@
+/*------------------------------------*\
+    $NAVIGATION TO WORK PROJECTS
+\*------------------------------------*/
+
+
+/**
+ *nav to other projects, at the bottom of each case- page
+ */
+ 
+.more-examples {
+	background: $greyDarkest;
+	margin-top: $base-spacing-unit*2;
+	padding: $base-spacing-unit;
+	
+	a {
+		color: $white;
+	}
+	
+	h2 {
+		margin-bottom: $base-spacing-unit;
+	}
+	
+	h3 {
+		//@media screen and (min-width: 0px) and (max-width: $mini-tablet-start) {
+			font-size: $h4-size;
+		//}
+	}
+	
+	ul {
+		margin: 0;	
+		
+		
+		// start 2 col at breakpoint
+			@include media-query(desk) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 10px; 
+			}
+		
+	}
+	
+    li {
+	    margin: 0 $base-spacing-unit $base-spacing-unit 0;
+	    
+	    //uses a grid layout
+		display: grid;
+				
+		grid-template-columns: $base-spacing-unit*7 1fr;
+
+		grid-column-gap: $base-spacing-unit/1.5;
+
+		grid-template-rows: auto 1fr;
+		
+		grid-template-areas: 
+		"img title";
+		
+		img {
+			grid-area: img;
+			
+			width: 100%;
+		}
+		h3 {
+			grid-area: title;
+		}
+	}
+}
+
+
+
+

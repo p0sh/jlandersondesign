@@ -1,0 +1,225 @@
+/*------------------------------------*\
+    $PAGE OBJECTS
+\*------------------------------------*/
+
+
+//			MOVE TO PARTIALS AS NEEDED
+
+
+/**
+ * INDEX/INTRO PAGE
+ */
+
+ 
+ //sets some rollover styles for navigation chunks
+a:has(div.project), // on the INTRO page
+nav.more-examples a:has(li) { // on the PROJECT ie. "case-" pgs
+	@include navchunks();
+}
+ 
+ 
+.project {  
+  color: $white;
+  margin: $base-spacing-unit*2 0;
+    	
+	h1 {
+		line-height: normal;
+		text-decoration: none;
+	}
+	
+	p {
+		padding-bottom: 1rem;
+		
+		&.summary {
+			font-size: $base-font-size;
+			padding: 0 0 .75rem;
+		}
+	} 
+
+
+	//start using grid at breakpoint 
+	@include media-query(mini-tablet) {
+		display: grid;
+				
+		grid-template-columns: 35% 1fr;
+	
+		grid-column-gap: 2rem;
+	
+		grid-template-rows: auto 1fr;
+		
+		grid-template-areas: 
+		"img title"
+		"img summary";
+		
+			img {
+				grid-area: img;
+			}
+
+		margin-bottom:  $base-spacing-unit*4;    
+		
+		h1 {
+			grid-area: title;
+			align-self: start;
+			
+			@include font-size($big-size);
+		}
+		
+		p.summary {
+			grid-area: summary;
+			align-self: start;
+			
+			@include font-size($h1-size);
+		}
+	}
+}
+// end of index/intro page styles
+
+
+
+
+
+
+
+/**
+ * ABOUT PAGE	
+ *
+ */
+ 
+section.about img {
+	border-radius: 5%;
+	position: relative;
+	float: right;
+	width: 6rem; //12rem
+	height: auto;
+	margin: $base-spacing-unit;
+	
+
+	@include media-query(tablet) {
+		width: auto;
+	}
+
+}
+
+
+
+
+/**
+ * UX CASE STUDY PAGES
+ *
+ these pages content is contained by the ".wrapper" div, and then a single section with the attribute "class="content ux-casestudy"" 	
+ *
+ */
+ .ux-casestudy {
+	 
+	h1 {
+		 @extend .big;
+	 }
+ } 
+
+
+/**
+ * ALSO USING TOPDETAILS ON INDEX PAGE, SO BE CAREFUL
+ */
+ul.topdetails {
+    @extend .milli;
+    
+	background: $greyDarkest;
+    display: inline-block;
+    list-style: none;
+    padding: $half-spacing-unit;
+    margin: $base-spacing-unit 0;
+}
+
+
+// screenshot divs contain images
+.screenshot {
+	display: grid;
+			
+	grid-template-rows: auto 1fr;
+
+	grid-row-gap: $half-spacing-unit;
+	
+	grid-template-columns: auto;
+	
+	grid-template-areas: 
+	"img"
+	"label";
+	
+	justify-content: center;
+
+	
+	margin: $base-spacing-unit*2 $half-spacing-unit $base-spacing-unit*2 0;	
+
+		
+	img[src*="-MOBILE"] { 
+		width: 200px;
+	}
+}
+
+// multi- is a group of related screenshots
+.multi-screenshot {
+	// start flex at breakpoint
+	@include media-query(tablet) {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+
+// screeshots OR groups might have a label
+label {
+	@extend .milli;
+	
+	display: block;
+	font-family: $second-font-family;
+	padding: 0 ($base-spacing-unit / 3) $half-spacing-unit;
+	text-align: center;
+}
+
+
+
+
+
+
+
+// overlapping screenshot effect for mobile sizes
+@media (width <= 600px) {
+	div.overlapping {
+		display: grid;
+		/* Creates one column and one row */
+		grid-template-areas: "overlap-area";
+		/* Ensures the container wraps its content's height */
+		place-items: start;
+		//margin-bottom: $half-spacing-unit; //8
+		
+		.screenshot{ 
+		grid-area: overlap-area;
+		/* Use transform to visually offset each image */
+		transform: translate(0, 0); /* Base position */
+		width: 50%  !important;
+		height: auto;
+		}
+		
+		.screenshot:nth-child(2) {
+		transform: translate(50%, 10%);
+		z-index: 2;
+		}
+		
+		.screenshot:nth-child(3) {
+		transform: translate(100%, 20%);
+		z-index: 3;
+		}
+		
+		label {
+		z-index: 99;
+		transform: translate(0, 140%);
+		}
+	}
+}
+ 
+ 
+ 
+ //end of .ux-casestudy section styles
+ 
+ 
