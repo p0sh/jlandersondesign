@@ -1,0 +1,224 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+/**
+ * GENERAL F11Y
+ */
+ 
+ 
+/**
+ * MEDIA QUERIES
+ *
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+
+ */
+@mixin media-query($media-query){
+
+    @if $media-query == phone{
+
+        @media only screen and (max-width:$mini-tablet-start) { @content; }
+
+    }
+
+    @if $media-query == mini-tablet{
+
+        @media only screen and (min-width:$mini-tablet-start) { @content; }
+
+    }
+
+    @if $media-query == tablet{
+
+        @media only screen and (min-width:$tablet-start) { @content; }
+
+    }
+
+    @if $media-query == desk{
+
+        @media only screen and (min-width:$desk-start) { @content; }
+
+    }
+
+}
+
+
+/** NOTE: used in _hedsizes partial
+	
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ * and also SitePoint
+ * https://www.sitepoint.com/using-sass-build-custom-type-scale-vertical-rhythm/
+ *
+ */
+@mixin font-size($font-size, $line-height:true){
+    font-size:$font-size;
+    font-size:($font-size / $base-font-size)*1rem;
+    @if $line-height == true{
+	    $line-height: $base-font-size * $base-line-height / $font-size;
+        //line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+
+
+/** NOTE: DO I NEED VENDOR MIXIN ANYMORE??
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ */
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
+}
+
+
+
+/**
+ * PAGE FADE-IN ANIMATION
+ *
+ 	'@include page-fade($delay: $delay-head);'
+ *
+ */
+@mixin page-fade($duration: 2s, $delay: 3s) {
+
+	opacity: 0;
+	
+	animation-delay: $delay; // this changes for each piece	on index page
+	animation-duration: $duration;
+	animation-fill-mode: forwards;
+	animation-name: fadein;
+
+	
+	@keyframes fadein {
+		0% {
+			opacity: 0;
+		}
+/*
+		50% {
+			opacity: .3;
+		}
+		70% {
+			opacity: .7;
+		}
+*/
+		85% {
+			opacity: .85;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+
+
+
+
+/**
+ * CTA STYLES
+ */
+//vars for default CTA and anchor link colors
+$cta-bg: 			$blue;
+$cta-text:			$black;
+
+$rollover-bg:		$greyDarkest;
+$rollover-text: 	$cta-bg;
+
+
+@mixin CTA-rollover($bg: $rollover-bg, $text: $rollover-text){
+	background-color: $bg;
+	color: $text;
+	text-decoration: underline;
+	
+	@include transition;
+}
+
+
+// for CTA BUTTON shapes
+@mixin CTA($bg: $cta-bg, $display: inline-block, $padding: 0rem .25rem){
+	background-color: $bg;
+	border-radius: $round;
+	border: none;
+	color: $cta-text;
+	display: $display;
+	font-family: $second-font-family;
+	letter-spacing: .02rem;
+	padding: $padding;
+	text-align: center;
+	text-decoration: none;	
+	text-shadow: none;
+	
+	&:hover {
+		@include CTA-rollover;
+	}
+}
+
+@mixin CTA-icon($bg-size: 1.2rem, $bg-pos: 0rem center, $padd: .5rem .5rem .5rem 1.6rem !important){ // put SVG icon as bg img on the left
+	background-repeat: no-repeat;
+	background-size: $bg-size;
+	background-position: $bg-pos;	
+
+	margin-right: 1rem;
+	padding: $padd; //overrides .contains-ctas
+}
+
+
+
+
+/**
+ * Rollover style, currently used on simple anchor hover 
+ */
+@mixin rollover(){
+	background-color: $greyLight;
+	
+	@include transition;
+}
+
+
+/**
+ * for Navigation chunks that need:
+ * 1. to be blocks inside an anchor tag
+ * 2. no underline
+ * 3. nice grey rollover bg
+ */
+@mixin navchunks () {
+	display: block;
+	
+	text-decoration: none;
+	
+	&:hover {
+		//@include CTA-rollover($bg: $cta-bg, $text: $cta-text);
+		@include CTA-rollover;
+	}
+}
+
+
+
+/**
+ * OTHER STYLING
+ */
+
+//Transitions 
+@mixin transition(){
+	transition-duration: $timing-hover;
+	transition-property: all;
+	transition-timing-function: ease;
+}
+
+
+//Text-shadow settings CURRENTLY REMOVED FROM ALL TYPE 
+@mixin text-shadow ($x: 1px, $y: 1px, $blur: 1.5px, $color: $greyTouch){
+	text-shadow: $x $y $blur $color; 
+}
+
+
